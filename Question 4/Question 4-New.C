@@ -6,8 +6,8 @@ using namespace std;
 
 const int MAX = 875714;
 int leaders[MAX];
-vector<vector<int> > adjacency_list(MAX);
-vector<vector<int> > reversed_adjacency_list(MAX);
+vector<int> adjacency_list[MAX];
+vector<int> reversed_adjacency_list[MAX];
 int finish_time[MAX];
 int current_time;
 int current_source;
@@ -71,8 +71,8 @@ void DFS_LOOP_2()
 
 int main()
 {
-    fstream fin("SCC.txt");
     int vertex1, vertex2;
+    fstream fin("SCC.txt");
     while (fin >> vertex1 >> vertex2) {
         adjacency_list[--vertex1].push_back(--vertex2);
         reversed_adjacency_list[vertex2].push_back(vertex1);
@@ -87,7 +87,6 @@ int main()
         cout << ',' << max_scc[i];
     }
     cout << endl;
-    cout << sizeof(adjacency_list) << endl;
     
     return 0;
 }
